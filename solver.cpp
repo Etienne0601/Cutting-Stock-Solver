@@ -39,11 +39,11 @@ void cutting_patterns(unsigned int stock_length, const vector<unsigned int> & sh
 
     unsigned int ind = 0;
     unsigned int count = 0;
+    unsigned int waste = 0;
     while (ind < num_lengths) {
-        if (count < 10) {
-            cout << "count =  " << count << "; n = " << vect_to_str(n) << endl;
-        } else {
-            cout << "count = " << count << "; n = " << vect_to_str(n) << endl;
+        waste = stock_length - dot_product(n, shelf_lengths);
+        if (waste < 20) {
+            cout << "count = " << count << "; n = " << vect_to_str(n) << " Waste: " << waste << "; maximal" << endl;
         }
 
         ind = 0;
@@ -65,7 +65,7 @@ int main() {
 
     vector<unsigned int> shelf_lengths{20, 45, 50, 55, 75};
 
-    cutting_patterns(110, shelf_lengths);
+    cutting_patterns(220, shelf_lengths);
 
     return 0;
 }
